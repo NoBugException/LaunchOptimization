@@ -5,6 +5,30 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!--application中设置window的默认背景为白色，避免黑屏问题（情愿白屏也不情愿黑屏）-->
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+    <!--将window背景设置为透明，但直接设置透明颜色不会生效，会导致显示黑屏-->
+    <style name="AppTheme_Launcher1" parent="AppTheme">
+        <item name="android:windowBackground">@color/translucent</item>
+    </style>
+
+    <!--等待Activity创建完成直接启动Activity-->
+    <style name="AppTheme_Launcher2" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!--等待Activity创建完成直接启动Activity，将window背景设置为null-->
+    <style name="AppTheme_Launcher3" parent="AppTheme">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+
+    <!--关闭window的预览，并将window背景设置为null-->
+    <style name="AppTheme_Launcher4" parent="AppTheme">
+        <item name="android:windowBackground">@null</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
 
 </resources>
