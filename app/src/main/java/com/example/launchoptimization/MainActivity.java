@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Debug;
+import android.os.Environment;
 import android.util.Log;
+
+import java.io.File;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,13 +18,20 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("yunchong", "===onCreate===");
+
+        File file = new File(Environment.getExternalStorageDirectory(), "MyCustomApplication.trace");
+        Log.d("TAG", "file:" + file.getAbsolutePath());
+        //把分析结果存在一个文件
+        Debug.startMethodTracing(file.getAbsolutePath());
+
         try {
             // 模拟Activity耗时操作
             Thread.sleep(5000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
+        Debug.stopMethodTracing();
     }
 
     @Override
